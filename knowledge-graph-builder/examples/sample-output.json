@@ -1,0 +1,382 @@
+{
+  "source": {
+    "title": "Professional History - Subject A",
+    "source_type": "document",
+    "extracted_at_iso": "2026-01-31T12:00:00Z"
+  },
+  "entities": [
+    {
+      "id": "ent_person_001",
+      "type": "person",
+      "name": "Subject A",
+      "aliases": ["A", "SA"],
+      "notes": "Primary subject of analysis",
+      "confidence": 1.0
+    },
+    {
+      "id": "ent_org_001",
+      "type": "org",
+      "name": "Company Alpha",
+      "aliases": ["Alpha Corp", "Alpha"],
+      "notes": "2010-2015, Senior Manager role",
+      "confidence": 0.95
+    },
+    {
+      "id": "ent_org_002",
+      "type": "org",
+      "name": "Company Beta",
+      "aliases": ["Beta Inc", "Beta"],
+      "notes": "2015-2018, Director role",
+      "confidence": 0.95
+    },
+    {
+      "id": "ent_org_003",
+      "type": "org",
+      "name": "Company Gamma",
+      "aliases": ["Gamma LLC", "Gamma"],
+      "notes": "2018-2023, VP role",
+      "confidence": 0.98
+    },
+    {
+      "id": "ent_person_002",
+      "type": "person",
+      "name": "Person B",
+      "aliases": ["B"],
+      "notes": "Colleague at Company Alpha",
+      "confidence": 0.85
+    },
+    {
+      "id": "ent_person_003",
+      "type": "person",
+      "name": "Person C",
+      "aliases": ["C"],
+      "notes": "Mentor, introduced at Company Beta",
+      "confidence": 0.90
+    },
+    {
+      "id": "ent_place_001",
+      "type": "place",
+      "name": "City X",
+      "aliases": ["X City", "Metropolitan X"],
+      "notes": "Company Alpha headquarters location",
+      "confidence": 0.88
+    },
+    {
+      "id": "ent_place_002",
+      "type": "place",
+      "name": "City Y",
+      "aliases": ["Y City"],
+      "notes": "Company Beta office location",
+      "confidence": 0.85
+    }
+  ],
+  "themes": [
+    {
+      "id": "theme_001",
+      "label": "Strategic Leadership",
+      "keywords": ["strategy", "leadership", "vision", "planning"],
+      "confidence": 0.88
+    },
+    {
+      "id": "theme_002",
+      "label": "Team Development",
+      "keywords": ["team", "development", "hiring", "mentoring"],
+      "confidence": 0.82
+    },
+    {
+      "id": "theme_003",
+      "label": "Operational Excellence",
+      "keywords": ["operations", "efficiency", "process", "improvement"],
+      "confidence": 0.85
+    }
+  ],
+  "quotes": [
+    {
+      "id": "q_001",
+      "quote_text": "We transformed the business model over three years, moving from a traditional approach to a data-driven strategy.",
+      "speaker_entity_id": "ent_person_001",
+      "about_entity_ids": ["ent_org_001"],
+      "theme_ids": ["theme_001"],
+      "company_context_entity_id": "ent_org_001",
+      "location_entity_id": "ent_place_001",
+      "time_text": "2010-2013",
+      "time_iso": "2010/2013",
+      "sentiment": "positive",
+      "certainty": "certain",
+      "confidence": 0.90
+    },
+    {
+      "id": "q_002",
+      "quote_text": "Person C became a crucial mentor during my transition to Company Beta. Their guidance was invaluable.",
+      "speaker_entity_id": "ent_person_001",
+      "about_entity_ids": ["ent_person_003", "ent_org_002"],
+      "theme_ids": ["theme_002"],
+      "company_context_entity_id": "ent_org_002",
+      "time_text": "2015",
+      "time_iso": "2015",
+      "sentiment": "positive",
+      "certainty": "certain",
+      "confidence": 0.92
+    },
+    {
+      "id": "q_003",
+      "quote_text": "At Company Alpha, I learned the importance of building strong cross-functional teams. Person B and I worked closely on several initiatives.",
+      "speaker_entity_id": "ent_person_001",
+      "about_entity_ids": ["ent_org_001", "ent_person_002"],
+      "theme_ids": ["theme_002"],
+      "company_context_entity_id": "ent_org_001",
+      "time_text": "2012-2014",
+      "time_iso": "2012/2014",
+      "sentiment": "positive",
+      "certainty": "certain",
+      "confidence": 0.88
+    },
+    {
+      "id": "q_004",
+      "quote_text": "The operational improvements we implemented at Company Gamma resulted in significant cost savings and efficiency gains.",
+      "speaker_entity_id": "ent_person_001",
+      "about_entity_ids": ["ent_org_003"],
+      "theme_ids": ["theme_003"],
+      "company_context_entity_id": "ent_org_003",
+      "time_text": "2019-2021",
+      "time_iso": "2019/2021",
+      "sentiment": "positive",
+      "certainty": "certain",
+      "confidence": 0.90
+    },
+    {
+      "id": "q_005",
+      "quote_text": "My role at Company Alpha was formative. I started as a Senior Manager and quickly took on broader responsibilities.",
+      "speaker_entity_id": "ent_person_001",
+      "about_entity_ids": ["ent_org_001"],
+      "theme_ids": ["theme_001"],
+      "company_context_entity_id": "ent_org_001",
+      "time_text": "2010-2015",
+      "time_iso": "2010/2015",
+      "sentiment": "positive",
+      "certainty": "certain",
+      "confidence": 0.93
+    }
+  ],
+  "claims": [
+    {
+      "id": "claim_001",
+      "claim_text": "Revenue increased 300% during tenure at Company Alpha",
+      "about_entity_ids": ["ent_org_001"],
+      "theme_ids": ["theme_001"],
+      "time_text": "2010-2015",
+      "time_iso": "2010/2015",
+      "confidence": 0.85
+    },
+    {
+      "id": "claim_002",
+      "claim_text": "Built and led cross-functional teams of 20+ people",
+      "about_entity_ids": ["ent_org_001", "ent_org_002"],
+      "theme_ids": ["theme_002"],
+      "time_text": "2010-2018",
+      "time_iso": "2010/2018",
+      "confidence": 0.82
+    },
+    {
+      "id": "claim_003",
+      "claim_text": "Implemented operational improvements resulting in 40% cost reduction",
+      "about_entity_ids": ["ent_org_003"],
+      "theme_ids": ["theme_003"],
+      "time_text": "2019-2021",
+      "time_iso": "2019/2021",
+      "confidence": 0.88
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel_001",
+      "type": "works_for",
+      "from_id": "ent_person_001",
+      "to_id": "ent_org_001",
+      "time_text": "2010-2015",
+      "time_iso": "2010/2015",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_001", "q_003", "q_005"],
+      "confidence": 0.95
+    },
+    {
+      "id": "rel_002",
+      "type": "works_for",
+      "from_id": "ent_person_001",
+      "to_id": "ent_org_002",
+      "time_text": "2015-2018",
+      "time_iso": "2015/2018",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_002"],
+      "confidence": 0.92
+    },
+    {
+      "id": "rel_003",
+      "type": "works_for",
+      "from_id": "ent_person_001",
+      "to_id": "ent_org_003",
+      "time_text": "2018-2023",
+      "time_iso": "2018/2023",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_004"],
+      "confidence": 0.93
+    },
+    {
+      "id": "rel_004",
+      "type": "collaborated_with",
+      "from_id": "ent_person_001",
+      "to_id": "ent_person_002",
+      "time_text": "2012-2014",
+      "time_iso": "2012/2014",
+      "strength": 4,
+      "inferred": false,
+      "evidence_quote_ids": ["q_003"],
+      "confidence": 0.88
+    },
+    {
+      "id": "rel_005",
+      "type": "mentored",
+      "from_id": "ent_person_003",
+      "to_id": "ent_person_001",
+      "time_text": "2015",
+      "time_iso": "2015",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_002"],
+      "confidence": 0.92
+    },
+    {
+      "id": "rel_006",
+      "type": "located_in",
+      "from_id": "ent_org_001",
+      "to_id": "ent_place_001",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_001"],
+      "confidence": 0.88
+    },
+    {
+      "id": "rel_007",
+      "type": "said",
+      "from_id": "ent_person_001",
+      "to_id": "q_001",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_001"],
+      "confidence": 1.0
+    },
+    {
+      "id": "rel_008",
+      "type": "said",
+      "from_id": "ent_person_001",
+      "to_id": "q_002",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_002"],
+      "confidence": 1.0
+    },
+    {
+      "id": "rel_009",
+      "type": "said",
+      "from_id": "ent_person_001",
+      "to_id": "q_003",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_003"],
+      "confidence": 1.0
+    },
+    {
+      "id": "rel_010",
+      "type": "said",
+      "from_id": "ent_person_001",
+      "to_id": "q_004",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_004"],
+      "confidence": 1.0
+    },
+    {
+      "id": "rel_011",
+      "type": "said",
+      "from_id": "ent_person_001",
+      "to_id": "q_005",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_005"],
+      "confidence": 1.0
+    },
+    {
+      "id": "rel_012",
+      "type": "related_to_theme",
+      "from_id": "q_001",
+      "to_id": "theme_001",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_001"],
+      "confidence": 0.90
+    },
+    {
+      "id": "rel_013",
+      "type": "related_to_theme",
+      "from_id": "q_002",
+      "to_id": "theme_002",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_002"],
+      "confidence": 0.92
+    },
+    {
+      "id": "rel_014",
+      "type": "related_to_theme",
+      "from_id": "q_003",
+      "to_id": "theme_002",
+      "strength": 4,
+      "inferred": false,
+      "evidence_quote_ids": ["q_003"],
+      "confidence": 0.88
+    },
+    {
+      "id": "rel_015",
+      "type": "related_to_theme",
+      "from_id": "q_004",
+      "to_id": "theme_003",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_004"],
+      "confidence": 0.90
+    },
+    {
+      "id": "rel_016",
+      "type": "evidence_for",
+      "from_id": "q_001",
+      "to_id": "claim_001",
+      "strength": 4,
+      "inferred": true,
+      "evidence_quote_ids": ["q_001"],
+      "confidence": 0.85
+    },
+    {
+      "id": "rel_017",
+      "type": "evidence_for",
+      "from_id": "q_003",
+      "to_id": "claim_002",
+      "strength": 4,
+      "inferred": true,
+      "evidence_quote_ids": ["q_003"],
+      "confidence": 0.82
+    },
+    {
+      "id": "rel_018",
+      "type": "evidence_for",
+      "from_id": "q_004",
+      "to_id": "claim_003",
+      "strength": 5,
+      "inferred": false,
+      "evidence_quote_ids": ["q_004"],
+      "confidence": 0.88
+    }
+  ]
+}
