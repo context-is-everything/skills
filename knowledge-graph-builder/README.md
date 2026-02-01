@@ -1,4 +1,4 @@
-![Knowledge Graph Builder banner](https://www.context-is-everything.com/assets/knowledge-graph-builder-hero.png)
+![Knowledge Graph Builder banner](banner.png)
 
 # Knowledge Graph Builder
 

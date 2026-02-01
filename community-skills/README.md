@@ -1,4 +1,4 @@
-![Community Skills banner](https://www.context-is-everything.com/assets/community-skills-hero.png)
+![Community Skills banner](banner.png)
 
 # Community Skills
 

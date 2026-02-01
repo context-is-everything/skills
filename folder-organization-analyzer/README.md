@@ -1,4 +1,4 @@
-![Folder Organisation Analyser banner](https://www.context-is-everything.com/assets/folder-organisation-hero.png)
+![Folder Organisation Analyser banner](banner.png)
 
 # Folder Organisation Analyser
 

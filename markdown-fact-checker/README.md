@@ -1,4 +1,4 @@
-![Markdown Fact Checker banner](https://www.context-is-everything.com/assets/markdown-fact-checker-hero.png)
+![Markdown Fact Checker banner](banner.png)
 
 # Markdown Fact Checker
 

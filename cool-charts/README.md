@@ -1,4 +1,4 @@
-![Cool Charts banner](https://www.context-is-everything.com/assets/cool-charts-hero.png)
+![Cool Charts banner](banner.png)
 
 # Cool Charts
 
