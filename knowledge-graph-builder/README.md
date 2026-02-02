@@ -85,13 +85,6 @@ A structured JSON knowledge graph containing:
 }
 ```
 
-## Installation
-
-```bash
-git clone https://github.com/context-is-everything/skills.git /tmp/cie-skills
-cp -r /tmp/cie-skills/knowledge-graph-builder .claude/skills/
-```
-
 ## Links
 
 - [Community page](https://www.context-is-everything.com/community) · [Full skill documentation](SKILL.md)

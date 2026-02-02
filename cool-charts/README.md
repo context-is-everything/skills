@@ -78,13 +78,6 @@ Every chart is a self-contained HTML file with embedded D3.js — open it in any
 | Dashboard | Multi-metric overview |
 | Heatmap | Density and intensity patterns |
 
-## Installation
-
-```bash
-git clone https://github.com/context-is-everything/skills.git /tmp/cie-skills
-cp -r /tmp/cie-skills/cool-charts .claude/skills/
-```
-
 ## Links
 
 - [Community page](https://www.context-is-everything.com/community) · [Full skill documentation](SKILL.md)

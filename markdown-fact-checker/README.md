@@ -82,13 +82,6 @@ A structured verification report where each issue includes:
 | Dates | Validates chronological accuracy across the document |
 | Sources | Ensures proper citation and provenance tracking |
 
-## Installation
-
-```bash
-git clone https://github.com/context-is-everything/skills.git /tmp/cie-skills
-cp -r /tmp/cie-skills/markdown-fact-checker .claude/skills/
-```
-
 ## Links
 
 - [Community page](https://www.context-is-everything.com/community) · [Full skill documentation](SKILL.md)

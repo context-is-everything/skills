@@ -73,15 +73,6 @@ skill-name/
 └── references/       # Supporting reference files
 ```
 
-## Installation
-
-This skill is available in Sasha Studio environments. To use manually:
-
-```bash
-git clone https://github.com/context-is-everything/skills.git /tmp/cie-skills
-cp -r /tmp/cie-skills/community-skills .claude/skills/
-```
-
 ## Links
 
 - [Community page](https://www.context-is-everything.com/community) · [Full skill documentation](SKILL.md)
