@@ -1,4 +1,4 @@
-![Markdown Fact Checker banner](https://www.context-is-everything.com/assets/markdown-fact-checker-hero.png)
+![Markdown Fact Checker banner](banner.png)
 
 # Markdown Fact Checker
 
@@ -81,13 +81,6 @@ A structured verification report where each issue includes:
 | Names | Checks spelling consistency and correct attribution |
 | Dates | Validates chronological accuracy across the document |
 | Sources | Ensures proper citation and provenance tracking |
-
-## Installation
-
-```bash
-git clone https://github.com/context-is-everything/skills.git /tmp/cie-skills
-cp -r /tmp/cie-skills/markdown-fact-checker .claude/skills/
-```
 
 ## Links
 

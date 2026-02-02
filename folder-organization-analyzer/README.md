@@ -1,4 +1,4 @@
-![Folder Organisation Analyser banner](https://www.context-is-everything.com/assets/folder-organisation-hero.png)
+![Folder Organisation Analyser banner](banner.png)
 
 # Folder Organisation Analyser
 
@@ -74,13 +74,6 @@ Runs a health score assessment and gives a quick verdict — sometimes the answe
 | Artifact-type | Mixed media (docs, data, images) | Separates related items |
 | Flat with metadata | Small-to-medium collections | Relies on naming conventions |
 | Tag-first | Cross-cutting topics | Needs tooling support |
-
-## Installation
-
-```bash
-git clone https://github.com/context-is-everything/skills.git /tmp/cie-skills
-cp -r /tmp/cie-skills/folder-organization-analyzer .claude/skills/
-```
 
 ## Links
 

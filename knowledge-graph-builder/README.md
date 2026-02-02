@@ -1,4 +1,4 @@
-![Knowledge Graph Builder banner](https://www.context-is-everything.com/assets/knowledge-graph-builder-hero.png)
+![Knowledge Graph Builder banner](banner.png)
 
 # Knowledge Graph Builder
 
@@ -83,13 +83,6 @@ A structured JSON knowledge graph containing:
     { "text": "We restructured the entire division...", "speaker": "e2", "supports": ["r1"] }
   ]
 }
-```
-
-## Installation
-
-```bash
-git clone https://github.com/context-is-everything/skills.git /tmp/cie-skills
-cp -r /tmp/cie-skills/knowledge-graph-builder .claude/skills/
 ```
 
 ## Links

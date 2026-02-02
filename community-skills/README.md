@@ -1,4 +1,4 @@
-![Community Skills banner](https://www.context-is-everything.com/assets/community-skills-hero.png)
+![Community Skills banner](banner.png)
 
 # Community Skills
 
@@ -71,15 +71,6 @@ skill-name/
 ├── SKILL.md          # Skill definition with YAML frontmatter
 ├── README.md         # Public documentation with examples
 └── references/       # Supporting reference files
-```
-
-## Installation
-
-This skill is available in Sasha Studio environments. To use manually:
-
-```bash
-git clone https://github.com/context-is-everything/skills.git /tmp/cie-skills
-cp -r /tmp/cie-skills/community-skills .claude/skills/
 ```
 
 ## Links
