@@ -1,7 +1,17 @@
 ---
 name: community-skills
-description: "Contribute and update skills in the context-is-everything/skills community repository. Use this skill when: (1) User wants to add a new skill to the community repository, (2) User wants to update an existing skill in the community repository, (3) User mentions 'community skills', 'contribute skill', 'share skill', or 'publish skill', (4) User wants to create a PR for skill contributions. Automates the complete GitHub workflow: cloning, branching, committing, pushing, and PR creation using the github-community-token from secretstore."
+description: >-
+  Contribute and update skills in the context-is-everything/skills community
+  repository. Use this skill when: (1) User wants to add a new skill to the
+  community repository, (2) User wants to update an existing skill in the
+  community repository, (3) User mentions 'community skills', 'contribute
+  skill', 'share skill', or 'publish skill', (4) User wants to create a PR for
+  skill contributions. Automates the complete GitHub workflow: cloning,
+  branching, committing, pushing, and PR creation using the
+  github-community-token from secretstore.
 category: Development
+created: '2026-01-31'
+starred: true
 ---
 
 # Community Skills
@@ -92,14 +102,17 @@ Submit updates, fixes, or improvements to skills already in the community reposi
 
 Both operations follow this automated workflow:
 
+0. **Validate Token** - Verify token has push permissions (prevents wasted work)
 1. **Retrieve Token** - Securely fetch `github-community-token` from secretstore
 2. **Clone Repository** - Clone context-is-everything/skills to /tmp
-3. **Create Branch** - Generate feature branch with timestamp
+3. **Create Branch** - Generate feature branch with timestamp (cleanup existing if needed)
 4. **Copy Skill Files** - Copy your skill to the repository
 5. **Commit Changes** - Stage and commit with descriptive message
 6. **Push Branch** - Push to GitHub using authenticated remote
 7. **Create PR** - Submit pull request with generated description
 8. **Report Success** - Provide PR URL for review
+
+**Note:** Step 0 (token validation) is recommended but not currently automated. See "Before Contributing" best practices for manual validation.
 
 ### Token Management
 
@@ -402,14 +415,80 @@ fatal: unable to access 'https://github.com/...': The requested URL returned err
 
 3. If permissions incorrect, token may need rotation (contact administrator)
 
+### Token Permission Denied After Committing
+
+**Scenario:** The script successfully cloned, branched, and committed, but failed when pushing to GitHub.
+
+**Error:**
+```
+✓ Changes committed
+remote: Permission to context-is-everything/skills.git denied to [username]
+fatal: unable to access 'https://github.com/...': The requested URL returned error: 403
+```
+
+**This happens when:**
+- Token validation wasn't performed before starting
+- Token was rotated or revoked mid-process
+- Token belongs to user without push permissions
+
+**Recovery Steps:**
+
+1. **Update the token in secretstore:**
+   ```bash
+   # Add the new token with push permissions
+   mcp__secretstore__secretstore_set github-community-token "ghp_NewTokenHere..."
+   ```
+
+2. **Manually push the existing committed work:**
+   ```bash
+   cd /tmp/skills
+   git checkout [your-branch-name]
+
+   # Update remote with new token
+   TOKEN=$(mcp__secretstore__secretstore_get github-community-token | jq -r '.secret.value')
+   git remote set-url origin "https://${TOKEN}@github.com/context-is-everything/skills.git"
+
+   # Push the branch
+   git push -u origin [your-branch-name]
+   ```
+
+3. **Create the PR manually:**
+   ```bash
+   TOKEN=$(mcp__secretstore__secretstore_get github-community-token | jq -r '.secret.value')
+   curl -s -X POST \
+     -H "Authorization: token ${TOKEN}" \
+     -H "Accept: application/vnd.github.v3+json" \
+     https://api.github.com/repos/context-is-everything/skills/pulls \
+     -d '{
+       "title": "Add [skill-name] skill",
+       "body": "Brief description of the skill",
+       "head": "[your-branch-name]",
+       "base": "main"
+     }' | jq -r '.html_url'
+   ```
+
+**Prevention:**
+- Validate token permissions BEFORE starting (see Best Practices section below)
+
 ## Best Practices
 
 ### Before Contributing
 
-1. **Test Your Skill** - Ensure skill works as expected
-2. **Validate Structure** - Run skill validator if available
-3. **Review Documentation** - Check SKILL.md is clear and complete
-4. **Check Uniqueness** - Ensure skill doesn't duplicate existing skills
+1. **Validate Token Permissions** - Verify token has push access BEFORE starting (prevents wasted work):
+   ```bash
+   # Test token permissions (should return "push": true)
+   TOKEN=$(mcp__secretstore__secretstore_get github-community-token | jq -r '.secret.value')
+   curl -s -H "Authorization: token ${TOKEN}" \
+     https://api.github.com/repos/context-is-everything/skills | jq '.permissions'
+   ```
+
+2. **Test Your Skill** - Ensure skill works as expected
+
+3. **Validate Structure** - Run skill validator if available
+
+4. **Review Documentation** - Check SKILL.md is clear and complete
+
+5. **Check Uniqueness** - Ensure skill doesn't duplicate existing skills
 
 ### Contribution Guidelines
 
@@ -432,6 +511,59 @@ fatal: unable to access 'https://github.com/...': The requested URL returned err
 - **GitHub Workflow Patterns** - See [references/github-workflow.md](references/github-workflow.md)
 - **Token Management** - See `/home/sasha/all-project-files/deployed-md-files/docs/setup/github-token-distribution-design.md`
 - **Skill Creation** - Use the `skill-creator` skill
+
+---
+
+## Lessons Learned
+
+These improvements were identified from real-world usage (February 2026 - stealth-search skill contribution):
+
+### Issue 1: Late Permission Discovery
+**Problem:** Token validation happens at PUSH stage (step 6), after clone, branch, commit work is complete. If token lacks permissions, you've wasted time and left a partial state.
+
+**Solution:** Validate token permissions BEFORE starting any work (see "Before Contributing" best practices above).
+
+### Issue 2: Poor Error Recovery
+**Problem:** When push fails due to permission issues, the script doesn't provide recovery guidance. User must manually push with updated token.
+
+**Solution:** Added comprehensive "Token Permission Denied After Committing" troubleshooting section with exact recovery steps.
+
+### Issue 3: Branch Exists from Failed Attempt
+**Problem:** After fixing token and retrying, script fails because branch already exists from previous attempt. No cleanup guidance provided.
+
+**Solution:** Updated workflow step 3 to mention cleanup. Future enhancement: automate branch cleanup detection and retry.
+
+### Recommended Future Enhancements
+
+1. **Automated Pre-Flight Check:**
+   ```bash
+   # Add to script beginning
+   validate_token_permissions() {
+     TOKEN=$1
+     curl -s -H "Authorization: token ${TOKEN}" \
+       https://api.github.com/repos/context-is-everything/skills | \
+       jq -e '.permissions.push == true' > /dev/null || {
+       echo "✗ Token does not have push permissions"
+       exit 1
+     }
+   }
+   ```
+
+2. **Smart Branch Retry:**
+   ```bash
+   # Clean up failed attempts automatically
+   if git show-ref --verify --quiet refs/heads/$BRANCH; then
+     echo "⚠ Branch $BRANCH exists from previous attempt"
+     git branch -D $BRANCH
+     echo "✓ Cleaned up, retrying..."
+   fi
+   ```
+
+3. **Token Test Command:**
+   ```bash
+   # Add ./scripts/test_token.sh
+   # Quick one-command validation before contributing
+   ```
 
 ---
 
