@@ -1,3 +1,6 @@
+---
+created: '2026-01-31'
+---
 # GitHub Workflow Reference
 
 Complete reference for GitHub operations used in community skills contributions.
